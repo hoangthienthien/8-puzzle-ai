@@ -1,4 +1,4 @@
-[T_m_t_t_c_c_thu_t_to_n_8-Puzzle.csv](https://github.com/user-attachments/files/20151211/T_m_t_t_c_c_thu_t_to_n_8-Puzzle.csv)# 8-puzzle-ai
+# 8-puzzle-ai
 
 *Mục tiêu:
 Dự án này nhằm mục đích triển khai, minh họa và so sánh hiệu suất của một loạt các thuật toán tìm kiếm và học máy thuộc lĩnh vực Trí tuệ Nhân tạo (AI) trong việc giải quyết bài toán 8-puzzle kinh điển. Mục tiêu là cung cấp một cái nhìn trực quan và thực tế về cách các thuật toán khác nhau tiếp cận bài toán, đồng thời làm nổi bật ưu và nhược điểm của chúng về tính tối ưu, thời gian thực thi và yêu cầu bộ nhớ. Qua đó, người học có thể hiểu sâu hơn về các nguyên tắc cơ bản của tìm kiếm trong AI.
@@ -373,27 +373,4 @@ Tính đầy đủ: Có (nếu hội tụ).
 *SO SÁNH HIỆU SUẤT CÁC THUẬT TOÁN
 
 ![image](https://github.com/user-attachments/assets/5732d4ae-2c72-4310-ac32-6b7c6c069012)
-
-[Uploading T_m_t_t_c_c_thu_t_to_n_8-PuzzlThuật toán,Loại tìm kiếm,Chiến lược chính,Tối ưu,Đầy đủ
-Breadth-First Search (BFS),Uninformed,Duyệt theo mức (Queue),Có,Có
-Depth-First Search (DFS),Uninformed,Duyệt sâu (Stack),Không,Không
-IDDFS,Uninformed,DFS + tăng dần độ sâu,Có,Có
-Uniform Cost Search (UCS),Uninformed,Mở rộng node có g(n) thấp nhất,Có,Có
-A*,Informed,f(n) = g(n) + h(n),Có,Có
-Greedy Best-First Search,Informed,f(n) = h(n),Không,Không
-Hill Climbing,Heuristic Local,Đi xuống dốc h(n),Không,Không
-Steepest Ascent Hill Climbing,Heuristic Local,Tìm neighbor tốt nhất,Không,Không
-Stochastic Hill Climbing,Heuristic Local,Chọn neighbor cải thiện đầu tiên,Không,Không
-Simulated Annealing,Heuristic Probabilistic,Chấp nhận neighbor xấu theo xác suất,Không,Không
-Genetic Algorithm,Evolutionary,"Chọn lọc, lai ghép, đột biến",Không bảo đảm,Không
-Beam Search,Heuristic Local,Giữ k trạng thái tốt nhất,Không,Không
-Backtracking,Backtracking,DFS đệ quy,Không,Có
-Backtracking + FC,Backtracking + Heuristic,DFS + cắt tỉa theo f,Có,Có
-Min-Conflicts,Heuristic Local,Chọn neighbor tốt nhất ngẫu nhiên,Không,Không
-Q-learning,Reinforcement Learning,Q-table,Không bảo đảm,Không
-SARSA,Reinforcement Learning,Q-table,Không bảo đảm,Không
-Policy Gradient,Reinforcement Learning,Policy π(a|s),Không bảo đảm,Không
-IDA*,Informed,DFS + f = g + h,Có,Có
-Local Beam Search,Heuristic Local,Beam width giới hạn,Không,Không
-e.csv…]()
 
