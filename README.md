@@ -334,6 +334,11 @@ Tính đầy đủ: Có. Nếu tồn tại một conformant plan, BFS trên khô
 Độ phức tạp không gian (bộ nhớ): Cực kỳ cao. Phải lưu trữ các belief state trong hàng đợi, mỗi belief state có thể chứa nhiều trạng thái vật lý.
 
 
+![ScreenRecording2025-05-12033255-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/9e320f3d-a6a0-4639-a84c-d6ae34036776)
+
+
+
+
 6/HỌC TĂNG CƯỜNG (Reinforcement Learning):
 
 Học tăng cường là một lĩnh vực của học máy, nơi một tác tử (agent) tương tác với một môi trường và học cách hành động thông qua thử và sai để tối đa hóa một tín hiệu phần thưởng (reward) tích lũy theo thời gian.
@@ -373,4 +378,5 @@ Tính đầy đủ: Có (nếu hội tụ).
 *SO SÁNH HIỆU SUẤT CÁC THUẬT TOÁN
 
 ![image](https://github.com/user-attachments/assets/5732d4ae-2c72-4310-ac32-6b7c6c069012)
+![output](https://github.com/user-attachments/assets/a3bafe14-73eb-4b34-b758-6dd0ab92cf4c)
 
