@@ -1,0 +1,1 @@
+ "A*": "A* search uses f(n) = g(n) + h(n) with priority queue.",
