@@ -18,11 +18,23 @@ Tính đầy đủ: Có.
 
 
 thuật toán Greedy:
+
+
 Ý tưởng: Đây là thuật toán chỉ quan tâm đến hàm heuristic h(n)- tức là nó luôn chọn các trạng thái mà nó tin là gần đích nhất mà không xét đến chi phí đã đi và sử dụng hàng đợi ưu tiên dựa trên h(n):    f(n) = h(n)
+
+
 Nhận xét:
+
+
 Tính tối ưu: Vì bỏ qua g(n), nó có thể đi vào một đường dài mặc dù có vẻ gần đích ở mỗi bước.
+
+
 Tính đầy đủ: Có thể đi vào vòng lặp nếu không kiểm tra trạng thái đã thăm. Nó cũng có thể bị kẹt và không tìm thấy lời giải ngay cả khi nó tồn tại.
+
+
 Độ phức tạp thời gian: Thường nhanh hơn A* hoặc BFS để tìm ra một lời giải (không nhất thiết tối ưu), độ phức tạp trong trường hợp xấu nhất là O(b^m).
+
+
 Độ phức tạp không gian: Thường ít hơn A* nhưng trong trường hợp xấu nhất cũng là O(b^m).
 
 ![ScreenRecording2025-05-12001310-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/2c423500-153c-4f6b-9fa1-ea5fa25f07be)
