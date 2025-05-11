@@ -1,12 +1,19 @@
 # 8-puzzle-ai
 
 Thuật toán A*:
+
 Ý tưởng: 
+
 Thuật toán A* sử dụng công thức đánh giá: f(n) = g (n) + h(n) với g(n) là chi phí từ điểm bắt đầu đến nút n; h(n) là àm heuristic - ước lượng chi phí còn lại từ n đến đích. Thuật toán luôn chọn nút có giá trị f(n) nhỏ nhất trong hàng đợi ưu tiên để mở rộng tiếp
+
 Nhận xét:
+
 Tính tối ưu: A* đảm bảo tìm ra đường đi tối ưu nếu hàm heuristic h(n) là chấp nhận được (admissible), nghĩa là h(n) không bao giờ đánh giá quá cao chi phí thực tế để đạt đích (luôn ≤ chi phí thực tế). Khoảng cách Manhattan là một heuristic chấp nhận được cho 8-puzzle. Tính tối ưu cũng đòi hỏi h(n) nhất quán (consistent) hoặc có kiểm tra trạng thái đã thăm khi một nút được tìm thấy lại qua đường đi tốt hơn.
+
 Tính đầy đủ: Có.
+
 Độ phức tạp thời gian: Phụ thuộc mạnh vào chất lượng của heuristic. Với heuristic tốt, A* có thể hiệu quả hơn nhiều so với các thuật toán không thông tin. Trong trường hợp xấu nhất, nó có thể suy biến thành BFS/UCS.
+
 Độ phức tạp không gian (bộ nhớ): Vẫn có thể rất lớn. A* lưu trữ tất cả các nút đã được sinh ra trong bộ nhớ (trong hàng đợi ưu tiên và danh sách đóng). Đây là hạn chế chính của A*.
 
 ![ScreenRecording2025-05-11235627-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/123bc6ed-9e20-4e97-9bca-d5549a3fad90)
@@ -20,7 +27,9 @@ Tính đầy đủ: Có.
 Thuật toán Greedy:
 
 
-Ý tưởng: Đây là thuật toán chỉ quan tâm đến hàm heuristic h(n)- tức là nó luôn chọn các trạng thái mà nó tin là gần đích nhất mà không xét đến chi phí đã đi và sử dụng hàng đợi ưu tiên dựa trên h(n):    f(n) = h(n)
+Ý tưởng: 
+
+Đây là thuật toán chỉ quan tâm đến hàm heuristic h(n)- tức là nó luôn chọn các trạng thái mà nó tin là gần đích nhất mà không xét đến chi phí đã đi và sử dụng hàng đợi ưu tiên dựa trên h(n):    f(n) = h(n)
 
 
 Nhận xét:
@@ -43,6 +52,7 @@ Tính đầy đủ: Có thể đi vào vòng lặp nếu không kiểm tra trạ
 
 
 Thuật toán IDA*:
+
 Ý tưởng: 
 
 Đây là thuật toán kết hợp giữ A* và IDDFS (duyệt theo chiều sâu có giới hạn, tăng dần giới hạn). Mục đích nhằm tìm đường tối ưu như A* nhưng tiết kiệm bộ nhớ hơn.
