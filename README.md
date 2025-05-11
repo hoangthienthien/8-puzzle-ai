@@ -17,7 +17,7 @@ Tính đầy đủ: Có.
 
 
 
-thuật toán Greedy:
+Thuật toán Greedy:
 
 
 Ý tưởng: Đây là thuật toán chỉ quan tâm đến hàm heuristic h(n)- tức là nó luôn chọn các trạng thái mà nó tin là gần đích nhất mà không xét đến chi phí đã đi và sử dụng hàng đợi ưu tiên dựa trên h(n):    f(n) = h(n)
@@ -38,3 +38,34 @@ Tính đầy đủ: Có thể đi vào vòng lặp nếu không kiểm tra trạ
 Độ phức tạp không gian: Thường ít hơn A* nhưng trong trường hợp xấu nhất cũng là O(b^m).
 
 ![ScreenRecording2025-05-12001310-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/2c423500-153c-4f6b-9fa1-ea5fa25f07be)
+
+
+
+
+Thuật toán IDA*:
+Ý tưởng: 
+
+Đây là thuật toán kết hợp giữ A* và IDDFS (duyệt theo chiều sâu có giới hạn, tăng dần giới hạn). Mục đích nhằm tìm đường tối ưu như A* nhưng tiết kiệm bộ nhớ hơn.
+Cách hoạt động:
+
+Chúng ta bắt đầu với bound = h(start): chính là chi phí dự tính từ trạng thái ban đầu đến đích
+
+Tiếp tục duyệt theo chiều sâu nếu f(n) > h(start):
+            
+            nếu đến đích thì trả về kết quả
+
+            nếu chưa đến đích thì ghi nhận các f(n) đã vượt ngưỡng và chọn ngưỡng nhỏ nhất trong số đó làm bound mới
+
+Nhận xét: 
+
+Tính tối ưu: Có (với heuristic chấp nhận được, giống A*).
+
+Tính đầy đủ: Có.
+
+Độ phức tạp thời gian: Tương tự A* về mặt lý thuyết, nhưng có thể chậm hơn trong thực tế do phải duyệt lại các nút ở các lần lặp trước. Tuy nhiên, nếu số lượng nút tăng mạnh theo giá trị f, chi phí duyệt lại không quá lớn.
+
+Độ phức tạp không gian (bộ nhớ): O(bd). Giống như IDDFS, IDA chỉ yêu cầu bộ nhớ tuyến tính theo độ sâu của lời giải. Đây là ưu điểm vượt trội so với A* cho các bài toán có không gian trạng thái rất lớn.
+
+
+![ScreenRecording2025-05-12002209-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/94754449-3044-4b07-863d-364bcb495597)
+
