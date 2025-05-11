@@ -1,5 +1,10 @@
 # 8-puzzle-ai
 
+
+1/CÁC THUẬT TOÁN TÌM KIẾM CÓ THÔNG TIN (INNFORMED SEARCH)
+
+Các thuật toán này sử dụng một hàm heuristic h(n) để ước lượng chi phí từ trạng thái hiện tại n đến trạng thái đích. Heuristic này cung cấp "thông tin" về đích đến, giúp hướng dẫn tìm kiếm hiệu quả hơn so với tìm kiếm mù quáng. Trong dự án này, heuristic chính được sử dụng là Khoảng cách Manhattan: h(n) là tổng khoảng cách (tính theo số ô di chuyển ngang và dọc) mà mỗi ô số (từ 1 đến 8) phải di chuyển từ vị trí hiện tại của nó trong trạng thái n để về đúng vị trí trong trạng thái đích.
+
 Thuật toán A*:
 
 Ý tưởng: 
@@ -29,20 +34,17 @@ Thuật toán Greedy:
 
 Ý tưởng: 
 
-Đây là thuật toán chỉ quan tâm đến hàm heuristic h(n)- tức là nó luôn chọn các trạng thái mà nó tin là gần đích nhất mà không xét đến chi phí đã đi và sử dụng hàng đợi ưu tiên dựa trên h(n):    f(n) = h(n)
+Đây là thuật toán chỉ quan tâm đến hàm heuristic h(n)- tức là nó luôn chọn các trạng thái mà nó tin là gần đích nhất mà không xét đến chi phí đã đi và sử dụng hàng đợi ưu tiên dựa trên h(n):    
+                                                                        f(n) = h(n)
 
 
 Nhận xét:
 
-
 Tính tối ưu: Vì bỏ qua g(n), nó có thể đi vào một đường dài mặc dù có vẻ gần đích ở mỗi bước.
-
 
 Tính đầy đủ: Có thể đi vào vòng lặp nếu không kiểm tra trạng thái đã thăm. Nó cũng có thể bị kẹt và không tìm thấy lời giải ngay cả khi nó tồn tại.
 
-
 Độ phức tạp thời gian: Thường nhanh hơn A* hoặc BFS để tìm ra một lời giải (không nhất thiết tối ưu), độ phức tạp trong trường hợp xấu nhất là O(b^m).
-
 
 Độ phức tạp không gian: Thường ít hơn A* nhưng trong trường hợp xấu nhất cũng là O(b^m).
 
@@ -78,4 +80,10 @@ Tính đầy đủ: Có.
 
 
 ![ScreenRecording2025-05-12002209-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/94754449-3044-4b07-863d-364bcb495597)
+
+
+
+2/CÁC THUẬT TOÁN TÌM KIẾM KHÔNG THÔNG TIN (UNINFORMED SEARCH):
+
+
 
