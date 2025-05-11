@@ -1,5 +1,7 @@
-# 8-puzzle-ai
+[T_m_t_t_c_c_thu_t_to_n_8-Puzzle.csv](https://github.com/user-attachments/files/20151211/T_m_t_t_c_c_thu_t_to_n_8-Puzzle.csv)# 8-puzzle-ai
 
+*Mục tiêu:
+Dự án này nhằm mục đích triển khai, minh họa và so sánh hiệu suất của một loạt các thuật toán tìm kiếm và học máy thuộc lĩnh vực Trí tuệ Nhân tạo (AI) trong việc giải quyết bài toán 8-puzzle kinh điển. Mục tiêu là cung cấp một cái nhìn trực quan và thực tế về cách các thuật toán khác nhau tiếp cận bài toán, đồng thời làm nổi bật ưu và nhược điểm của chúng về tính tối ưu, thời gian thực thi và yêu cầu bộ nhớ. Qua đó, người học có thể hiểu sâu hơn về các nguyên tắc cơ bản của tìm kiếm trong AI.
 
 1/CÁC THUẬT TOÁN TÌM KIẾM CÓ THÔNG TIN (INNFORMED SEARCH)
 
@@ -312,4 +314,86 @@ Khả năng tránh đỉnh cục bộ: Trung bình, tốt hơn Hill-Climbing th�
 
 ![ScreenRecording2025-05-12024502-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/78dc3f78-6511-47e8-970b-595b3785786b)
 
+5/ CÁC THUẬT TOÁN CHO MÔI TRƯỜNG PHỨC TẠP (COMPLEX ENVIRONMENTS)
+
+Tìm kiếm không cảm biến (Sensorless Search): 
+
+Ý tưởng:
+
+Trong Sensorless Search, trạng thái của agent không phải là 1 vị trí cụ thể, mà là tập hợp tất cả các vị trí có thể (gọi là belief state).
+→ Agent phải lập kế hoạch sao cho hành động nào cũng đúng, bất kể mình đang ở đâu.
+
+Nhận xét:
+
+Tính tối ưu: Nếu dùng BFS trên không gian belief state, nó sẽ tìm ra conformant plan ngắn nhất (nếu tồn tại).
+
+Tính đầy đủ: Có. Nếu tồn tại một conformant plan, BFS trên không gian belief state sẽ tìm thấy nó.
+
+Độ phức tạp thời gian: Cực kỳ cao. Số lượng belief state có thể lớn hơn rất nhiều so với số lượng trạng thái vật lý (lên đến 2N với N trạng thái vật lý). Tìm kiếm trong không gian này thường rất tốn kém.
+
+Độ phức tạp không gian (bộ nhớ): Cực kỳ cao. Phải lưu trữ các belief state trong hàng đợi, mỗi belief state có thể chứa nhiều trạng thái vật lý.
+
+
+6/HỌC TĂNG CƯỜNG (Reinforcement Learning):
+
+Học tăng cường là một lĩnh vực của học máy, nơi một tác tử (agent) tương tác với một môi trường và học cách hành động thông qua thử và sai để tối đa hóa một tín hiệu phần thưởng (reward) tích lũy theo thời gian.
+
+Mô hình hóa 8-Puzzle cho RL (trong khuôn khổ Markov Decision Process - MDP):
+
+Trạng thái (State - S): Tập hợp tất cả các cấu hình có thể của bảng 3x3 (khoảng 9!/2 = 181,440 trạng thái).
+
+Hành động (Action - A): Tập các hành động có thể thực hiện từ một trạng thái (di chuyển ô trống U, D, L, R, nếu hợp lệ).
+
+Hàm chuyển đổi (Transition Model - P(s' | s, a)): Xác suất chuyển đến trạng thái s' khi thực hiện hành động a tại trạng thái s. Trong 8-puzzle, môi trường là tất định, nên P(s' | s, a) = 1 nếu s' là kết quả của a tại s, và bằng 0 nếu khác.
+Hàm phần thưởng (Reward Function - R(s, a, s')): Phần thưởng nhận được khi chuyển từ s đến s' bằng hành động a. Ví dụ: +100 khi đạt trạng thái đích, -1 cho mỗi bước di chuyển (để khuyến khích đường đi ngắn), -10 nếu thực hiện hành động không hợp lệ.
+Chính sách (Policy - π(s)): Một hàm ánh xạ từ trạng thái sang hành động, chỉ định hành động mà tác tử nên thực hiện tại mỗi trạng thái. Mục tiêu là học chính sách tối ưu π*.
+
+Hàm giá trị (Value Function):
+V(s): Giá trị kỳ vọng (tổng phần thưởng chiết khấu trong tương lai) khi bắt đầu từ trạng thái s và tuân theo một chính sách π.
+Q(s, a): Giá trị kỳ vọng khi thực hiện hành động a tại trạng thái s, và sau đó tuân theo chính sách π.
+Lời giải (Solution): Chính sách tối ưu π* chỉ dẫn cách hành động tại mọi trạng thái để tối đa hóa phần thưởng kỳ vọng dài hạn. Khi có π*, tác tử có thể đi từ trạng thái ban đầu đến trạng thái đích bằng cách luôn chọn hành động a = π*(s) tại mỗi trạng thái s.
+
+Ý tưởng:
+Là một thuật toán RL không cần mô hình (model-free) và ngoài chính sách (off-policy). Nó học trực tiếp hàm giá trị hành động tối ưu Q*(s, a) mà không cần biết mô hình chuyển đổi P hay hàm phần thưởng R một cách tường minh. Tác tử tương tác với môi trường, thử các hành động (cân bằng giữa thăm dò - exploration để khám phá và khai thác - exploitation để chọn hành động tốt nhất đã biết) và cập nhật giá trị Q của cặp (trạng thái, hành động) đã thực hiện dựa trên phần thưởng nhận được và ước lượng giá trị tối đa của trạng thái kế tiếp, thông qua phương trình cập nhật Bellman: Q(s, a) ← Q(s, a) + α [ R + γ max<sub>a'</sub> Q(s', a') - Q(s, a) ] Trong đó: α là tốc độ học (learning rate), γ là hệ số chiết khấu (discount factor). Lưu ý: Quá trình huấn luyện (học Q-table) thường diễn ra qua hàng nghìn hoặc hàng triệu lượt tương tác (episodes) và không được hiển thị trong animation. Animation chỉ thể hiện việc sử dụng Q-table đã học (chế độ khai thác hoàn toàn) để tìm đường đi từ trạng thái đầu đến đích.
+
+Nhận xét:
+
+Tính tối ưu: Có thể hội tụ đến chính sách tối ưu (dẫn đến đường đi ngắn nhất nếu hàm thưởng được thiết kế phù hợp) nếu các tham số (α, γ, chiến lược thăm dò ε-greedy) được chọn đúng và tác tử được huấn luyện đủ lâu (thăm mọi cặp (s, a) đủ số lần).
+
+Tính đầy đủ: Có (nếu hội tụ).
+
+Độ phức tạp thời gian: Thời gian huấn luyện rất lâu, đòi hỏi nhiều lượt tương tác với môi trường. Tuy nhiên, thời gian sử dụng chính sách đã học để tìm đường đi (tra cứu Q-table và chọn hành động có Q-value cao nhất) là rất nhanh, O(d) với d là độ dài đường đi.
+
+Độ phức tạp không gian (bộ nhớ): Rất cao. Cần lưu trữ Q-table, có kích thước bằng (số trạng thái * số hành động). Với ~181K trạng thái và tối đa 4 hành động, Q-table cho 8-puzzle là khá lớn đối với phương pháp học dạng bảng (tabular Q-learning). Các phương pháp xấp xỉ hàm (function approximation) như Deep Q-Networks (DQN) có thể giải quyết vấn đề bộ nhớ cho các không gian trạng thái lớn hơn nhiều.
+
+![ScreenRecording2025-05-12025719-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/9e0efa55-545b-4c22-af8f-b696b36c2329)
+
+
+
+*SO SÁNH HIỆU SUẤT CÁC THUẬT TOÁN
+
+![image](https://github.com/user-attachments/assets/5732d4ae-2c72-4310-ac32-6b7c6c069012)
+
+[Uploading T_m_t_t_c_c_thu_t_to_n_8-PuzzlThuật toán,Loại tìm kiếm,Chiến lược chính,Tối ưu,Đầy đủ
+Breadth-First Search (BFS),Uninformed,Duyệt theo mức (Queue),Có,Có
+Depth-First Search (DFS),Uninformed,Duyệt sâu (Stack),Không,Không
+IDDFS,Uninformed,DFS + tăng dần độ sâu,Có,Có
+Uniform Cost Search (UCS),Uninformed,Mở rộng node có g(n) thấp nhất,Có,Có
+A*,Informed,f(n) = g(n) + h(n),Có,Có
+Greedy Best-First Search,Informed,f(n) = h(n),Không,Không
+Hill Climbing,Heuristic Local,Đi xuống dốc h(n),Không,Không
+Steepest Ascent Hill Climbing,Heuristic Local,Tìm neighbor tốt nhất,Không,Không
+Stochastic Hill Climbing,Heuristic Local,Chọn neighbor cải thiện đầu tiên,Không,Không
+Simulated Annealing,Heuristic Probabilistic,Chấp nhận neighbor xấu theo xác suất,Không,Không
+Genetic Algorithm,Evolutionary,"Chọn lọc, lai ghép, đột biến",Không bảo đảm,Không
+Beam Search,Heuristic Local,Giữ k trạng thái tốt nhất,Không,Không
+Backtracking,Backtracking,DFS đệ quy,Không,Có
+Backtracking + FC,Backtracking + Heuristic,DFS + cắt tỉa theo f,Có,Có
+Min-Conflicts,Heuristic Local,Chọn neighbor tốt nhất ngẫu nhiên,Không,Không
+Q-learning,Reinforcement Learning,Q-table,Không bảo đảm,Không
+SARSA,Reinforcement Learning,Q-table,Không bảo đảm,Không
+Policy Gradient,Reinforcement Learning,Policy π(a|s),Không bảo đảm,Không
+IDA*,Informed,DFS + f = g + h,Có,Có
+Local Beam Search,Heuristic Local,Beam width giới hạn,Không,Không
+e.csv…]()
 
