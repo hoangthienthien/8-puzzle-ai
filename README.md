@@ -10,6 +10,13 @@ Tính đầy đủ: Có.
 Độ phức tạp không gian (bộ nhớ): Vẫn có thể rất lớn. A* lưu trữ tất cả các nút đã được sinh ra trong bộ nhớ (trong hàng đợi ưu tiên và danh sách đóng). Đây là hạn chế chính của A*.
 
 ![ScreenRecording2025-05-11235627-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/123bc6ed-9e20-4e97-9bca-d5549a3fad90)
+
+
+
+
+
+
+
 thuật toán Greedy:
 Ý tưởng: Đây là thuật toán chỉ quan tâm đến hàm heuristic h(n)- tức là nó luôn chọn các trạng thái mà nó tin là gần đích nhất mà không xét đến chi phí đã đi và sử dụng hàng đợi ưu tiên dựa trên h(n):    f(n) = h(n)
 Nhận xét:
