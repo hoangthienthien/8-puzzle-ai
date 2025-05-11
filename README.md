@@ -1,19 +1,19 @@
 # 8-puzzle-ai
 
-*Mục tiêu:
-Dự án này nhằm mục đích triển khai, minh họa và so sánh hiệu suất của một loạt các thuật toán tìm kiếm và học máy thuộc lĩnh vực Trí tuệ Nhân tạo (AI) trong việc giải quyết bài toán 8-puzzle kinh điển. Mục tiêu là cung cấp một cái nhìn trực quan và thực tế về cách các thuật toán khác nhau tiếp cận bài toán, đồng thời làm nổi bật ưu và nhược điểm của chúng về tính tối ưu, thời gian thực thi và yêu cầu bộ nhớ. Qua đó, người học có thể hiểu sâu hơn về các nguyên tắc cơ bản của tìm kiếm trong AI.
+1. Mục tiêu:
+  Dự án này nhằm mục đích triển khai, minh họa và so sánh hiệu suất của một loạt các thuật toán tìm kiếm và học máy thuộc lĩnh vực Trí tuệ Nhân tạo (AI) trong việc giải quyết bài toán 8-puzzle kinh điển. Mục tiêu là cung cấp một cái nhìn trực quan và thực tế về cách các thuật toán khác nhau tiếp cận bài toán, đồng thời làm nổi bật ưu và nhược điểm của chúng về tính tối ưu, thời gian thực thi và yêu cầu bộ nhớ. Qua đó, người học có thể hiểu sâu hơn về các nguyên tắc cơ bản của tìm kiếm trong AI.
 
-1/CÁC THUẬT TOÁN TÌM KIẾM CÓ THÔNG TIN (INNFORMED SEARCH)
+2. CÁC THUẬT TOÁN TÌM KIẾM CÓ THÔNG TIN (INNFORMED SEARCH)
 
 Các thuật toán này sử dụng một hàm heuristic h(n) để ước lượng chi phí từ trạng thái hiện tại n đến trạng thái đích. Heuristic này cung cấp "thông tin" về đích đến, giúp hướng dẫn tìm kiếm hiệu quả hơn so với tìm kiếm mù quáng. Trong dự án này, heuristic chính được sử dụng là Khoảng cách Manhattan: h(n) là tổng khoảng cách (tính theo số ô di chuyển ngang và dọc) mà mỗi ô số (từ 1 đến 8) phải di chuyển từ vị trí hiện tại của nó trong trạng thái n để về đúng vị trí trong trạng thái đích.
 
-Thuật toán A*:
+2.1. Thuật toán A*:
 
-Ý tưởng: 
+-Ý tưởng: 
 
 Thuật toán A* sử dụng công thức đánh giá: f(n) = g (n) + h(n) với g(n) là chi phí từ điểm bắt đầu đến nút n; h(n) là àm heuristic - ước lượng chi phí còn lại từ n đến đích. Thuật toán luôn chọn nút có giá trị f(n) nhỏ nhất trong hàng đợi ưu tiên để mở rộng tiếp
 
-Nhận xét:
+-Nhận xét:
 
 Tính tối ưu: A* đảm bảo tìm ra đường đi tối ưu nếu hàm heuristic h(n) là chấp nhận được (admissible), nghĩa là h(n) không bao giờ đánh giá quá cao chi phí thực tế để đạt đích (luôn ≤ chi phí thực tế). Khoảng cách Manhattan là một heuristic chấp nhận được cho 8-puzzle. Tính tối ưu cũng đòi hỏi h(n) nhất quán (consistent) hoặc có kiểm tra trạng thái đã thăm khi một nút được tìm thấy lại qua đường đi tốt hơn.
 
@@ -31,16 +31,16 @@ Tính đầy đủ: Có.
 
 
 
-Thuật toán Greedy:
+2.2. Thuật toán Greedy:
 
 
-Ý tưởng: 
+- Ý tưởng: 
 
 Đây là thuật toán chỉ quan tâm đến hàm heuristic h(n)- tức là nó luôn chọn các trạng thái mà nó tin là gần đích nhất mà không xét đến chi phí đã đi và sử dụng hàng đợi ưu tiên dựa trên h(n):    
                                                                         f(n) = h(n)
 
 
-Nhận xét:
+- Nhận xét:
 
 Tính tối ưu: Vì bỏ qua g(n), nó có thể đi vào một đường dài mặc dù có vẻ gần đích ở mỗi bước.
 
@@ -55,9 +55,9 @@ Tính đầy đủ: Có thể đi vào vòng lặp nếu không kiểm tra trạ
 
 
 
-Thuật toán IDA*:
+2.3. Thuật toán IDA*:
 
-Ý tưởng: 
+- Ý tưởng: 
 
 Đây là thuật toán kết hợp giữ A* và IDDFS (duyệt theo chiều sâu có giới hạn, tăng dần giới hạn). Mục đích nhằm tìm đường tối ưu như A* nhưng tiết kiệm bộ nhớ hơn.
 Cách hoạt động:
@@ -70,7 +70,7 @@ Tiếp tục duyệt theo chiều sâu nếu f(n) > h(start):
 
             nếu chưa đến đích thì ghi nhận các f(n) đã vượt ngưỡng và chọn ngưỡng nhỏ nhất trong số đó làm bound mới
 
-Nhận xét: 
+- Nhận xét: 
 
 Tính tối ưu: Có (với heuristic chấp nhận được, giống A*).
 
@@ -83,13 +83,13 @@ Tính đầy đủ: Có.
 
 ![ScreenRecording2025-05-12002209-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/94754449-3044-4b07-863d-364bcb495597)
 
-2/CÁC THUẬT TOÁN TÌM KIẾM KHÔNG THÔNG TIN (UNINFORMED SEARCH):
+3. CÁC THUẬT TOÁN TÌM KIẾM KHÔNG THÔNG TIN (UNINFORMED SEARCH):
 
-Thuật toán BFS:
-Ý tưởng: 
+3.1. Thuật toán BFS:
+- Ý tưởng: 
 Mở rộng nút nnoong nhất chưa được mở rộng, tức là thuật toán sẽ duyệt toàn bộ các nút ở độ sâu k trước khi duyệt bất kỳ nút nào ở độ sâu k+1. Thuật toán sử dụng hàng đợi (Queue) và tuân thoe nguyên tắc FIFO.
 
-Nhận xét:
+- Nhận xét:
 Tính tối ưu: BFS đảm bảo tìm ra đường đi ngắn nhất (ít bước di chuyển nhất) vì nó luôn tìm thấy nút đích nông nhất trước.
 
 Tính đầy đủ: Nếu có lời giải tồn tại, BFS chắc chắn sẽ tìm thấy nó.
@@ -100,11 +100,11 @@ Tính đầy đủ: Nếu có lời giải tồn tại, BFS chắc chắn sẽ t
 
 ![ScreenRecording2025-05-12001310-ezgif com-video-to-gif-converter (1)](https://github.com/user-attachments/assets/f603f97a-6707-433c-b4c8-ec1b8fae3679)
 
-Thuật toán DFS:
+3.2. Thuật toán DFS:
 
-Ý tưởng: Mở rộng nút sâu nhất có thể trước nghĩa là đi theo một nhánh cho tới tận cùng, chỉ quay lại khi gặp ngõ cụt hoặc đạt độ sâu giới hạn. Sử dụng ngăn xép (Stack) hoặc đệ quy và hoạt động theo nguyên tắc LIFO.
+- Ý tưởng: Mở rộng nút sâu nhất có thể trước nghĩa là đi theo một nhánh cho tới tận cùng, chỉ quay lại khi gặp ngõ cụt hoặc đạt độ sâu giới hạn. Sử dụng ngăn xép (Stack) hoặc đệ quy và hoạt động theo nguyên tắc LIFO.
 
-Nhận xét:
+- Nhận xét:
 
 Tính tối ưu: DFS không đảm bảo tìm ra đường đi ngắn nhất. Nó có thể tìm thấy một lời giải rất dài trước khi tìm thấy lời giải ngắn hơn (nếu có) ở nhánh khác.
 
@@ -118,13 +118,13 @@ Tính đầy đủ: Nếu không giới hạn độ sâu và không kiểm tra t
 ![ScreenRecording2025-05-12005142-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/352e9d86-4f43-400b-a529-2ade0e9385cc)
 
 
-Thuật toán IDDFS:
+3.3.Thuật toán IDDFS:
 
-Ý tưởng:
+- Ý tưởng:
 
 Mở rộng nút theo kiểu DFS có giới hạn độ sâu, nhưng lặp lại nhiều lần, mỗi lần tăng độ sâu giới hạn thêm 1. Thuật toán dựa trên DFS với depth_limit với độ sâu tăng lên 1 sau mỗi lần lặp.
 
-Nhận xét:
+- Nhận xét:
 
 Tính tối ưu: Giống như BFS, nó sẽ tìm thấy lời giải nông nhất đầu tiên.
 
@@ -139,11 +139,11 @@ Tính đầy đủ: Giống như BFS.
 
 ![ScreenRecording2025-05-12010025-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/d8e17145-1e55-49de-bd4e-d5543baaf494)
 
-Thuật toán UCS:
+3.4. Thuật toán UCS:
 
-Ý tưởng: Mở rộng nút có tổng chi phí đường đi nhỏ nhất (g(n)) từ gốc đến hiện tại. Tức là không quan tâm đến độ sâu hay heuristic mà chỉ quan tâm đến chi phí tích lũy thực tế. Thuật toán sử dụng hàng đợi ưu tiên với khóa g(n) (là chi phí góc đến trạng thái n).
+- Ý tưởng: Mở rộng nút có tổng chi phí đường đi nhỏ nhất (g(n)) từ gốc đến hiện tại. Tức là không quan tâm đến độ sâu hay heuristic mà chỉ quan tâm đến chi phí tích lũy thực tế. Thuật toán sử dụng hàng đợi ưu tiên với khóa g(n) (là chi phí góc đến trạng thái n).
 
-Nhận xét:
+- Nhận xét:
 
 Tính tối ưu: UCS đảm bảo tìm ra đường đi có tổng chi phí thấp nhất. Khi chi phí mỗi bước là như nhau và dương (ví dụ, bằng 1 như trong 8-puzzle), UCS hoạt động giống hệt BFS và tìm ra đường đi ngắn nhất.
 
@@ -156,13 +156,13 @@ Tính đầy đủ: Có (miễn là chi phí mỗi bước lớn hơn một hằ
 
 ![ScreenRecording2025-05-12011230-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/deec5dd7-776e-4758-ba54-08a209aa624e)
 
-3/ CÁC THUẬT TOÁN TÌM KIẾM CỤC BỘ (LOCAL SEARCH)
+4/ CÁC THUẬT TOÁN TÌM KIẾM CỤC BỘ (LOCAL SEARCH)
 
-Thuật toán leo đồi đơn giản (Simple hill climbing):
+4.1. Thuật toán leo đồi đơn giản (Simple hill climbing):
 
-Ý tưởng: Tìm lời giải bằng cách luôn di chuyển sang trạng thái hàng xóm có heuristic h(n) tốt hơn (nhỏ hơn). Sử dụng lệnh lặp While với 1 trạng thái hiện tại
+- Ý tưởng: Tìm lời giải bằng cách luôn di chuyển sang trạng thái hàng xóm có heuristic h(n) tốt hơn (nhỏ hơn). Sử dụng lệnh lặp While với 1 trạng thái hiện tại
 
-Nhận xét:
+- Nhận xét:
 
 Tính tối ưu/Đầy đủ: Thuật toán rất dễ bị "mắc kẹt" tại:
       
@@ -179,14 +179,14 @@ Tính tối ưu/Đầy đủ: Thuật toán rất dễ bị "mắc kẹt" tại:
 ![ScreenRecording2025-05-12014441-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/dbab5409-e11e-436a-8ab1-d586cbaf1cab)
 
 
-Thuật toán leo đồi dốc nhất (Steepest Ascent Hill Climbing):
+4.2. Thuật toán leo đồi dốc nhất (Steepest Ascent Hill Climbing):
 
-Ý tưởng:
+- Ý tưởng:
 
 Tương tự Hill-Climbing, nhưng xét toàn bộ hàng xóm và chọn hàng xóm tốt nhất, tức có 
 h(n) nhỏ nhất, rồi di chuyển đến đó nếu tốt hơn.
 → Giống như leo xuống đoạn dốc nhanh nhất trong mọi hướng.
- Nhận xét:
+- Nhận xét:
 
 Tính tối ưu: Vẫn có thể bị kẹt ở cực tiểu địa phương, bình nguyên, sườn núi
 
@@ -197,14 +197,14 @@ Tính tối ưu: Vẫn có thể bị kẹt ở cực tiểu địa phương, b�
 ![ScreenRecording2025-05-12015319-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/e9d3f0a5-6f54-460d-8aee-e2834628ac80)
 
 
-Thuật toán leo đồi ngẫu nhiên (Stochastic Hill Climbing):
+4.3. Thuật toán leo đồi ngẫu nhiên (Stochastic Hill Climbing):
 
-Ý tưởng:
+- Ý tưởng:
 
 Giống Steepest-Ascent, nhưng thay vì chọn hàng xóm tốt nhất, thuật toán xáo trộn tất cả hàng xóm và di chuyển ngay khi thấy một hàng xóm tốt hơn hiện tại.
 → Tăng tính ngẫu nhiên, giúp thoát bẫy đỉnh cục bộ tốt hơn.
 
-Nhận xét:
+- Nhận xét:
 
 Tính tối ưu/Đầy đủ: Vẫn có thể bị kẹt, nhưng tính ngẫu nhiên có thể giúp khám phá các phần khác nhau của sườn dốc.
 
@@ -217,12 +217,12 @@ Tính tối ưu/Đầy đủ: Vẫn có thể bị kẹt, nhưng tính ngẫu nh
 ![ScreenRecording2025-05-12020120-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/3f6ea079-7922-4539-a088-8c96b2335580)
 
 
-Thuật toán Simulated Annealing
+4.4. Thuật toán Simulated Annealing
 
-Ý tưởng:
+- Ý tưởng:
 Là một thuật toán leo đồi ngẫu nhiên có khả năng thoát khỏi cực tiểu địa phương. Nó cho phép di chuyển đến trạng thái xấu hơn (heuristic cao hơn) với một xác suất nhất định. Xác suất này (P = exp(-ΔE/T)) phụ thuộc vào mức độ xấu đi (ΔE = h(next) - h(current) > 0) và một tham số "nhiệt độ" (T). Ban đầu, T cao, cho phép di chuyển xấu nhiều hơn (khám phá rộng). Dần dần, T giảm theo một "lịch trình làm nguội" (cooling schedule), khiến xác suất chấp nhận nước đi xấu giảm xuống, thuật toán trở nên "tham lam" hơn (khai thác).
 
-Nhận xét:
+- Nhận xét:
 
 Tính tối ưu: có khả năng tìm được lời giải tốt hơn đáng kể so với các phiên bản Hill Climbing đơn giản do khả năng thoát khỏi cực tiểu địa phương.
 
@@ -234,13 +234,13 @@ Tính tối ưu: có khả năng tìm được lời giải tốt hơn đáng k�
 
 ![ScreenRecording2025-05-12020720-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/fc04f36e-c149-4bbb-873f-99b4b50fc686)
 
-Thuật toán Di truyền (Genetic Algorithm)
+4.5. Thuật toán Di truyền (Genetic Algorithm)
 
-Ý tưởng:
+- Ý tưởng:
 Là một thuật toán tìm kiếm dựa trên quần thể, mô phỏng quá trình chọn lọc tự nhiên và di truyền. Nó duy trì một tập hợp (quần thể - population) các trạng thái (cá thể - individuals).
 
 
-Nhận xét:
+- Nhận xét:
 
 Tính tối ưu: Không đảm bảo tìm ra trạng thái đích tối ưu (nếu có nhiều) và đường đi tìm được bởi A* sau đó cũng chỉ tối ưu cho trạng thái đích mà GA tìm được, không nhất thiết là đường đi tối ưu tổng thể từ trạng thái ban đầu.
 
@@ -256,12 +256,12 @@ Tính đầy đủ: Không đảm bảo. GA có thể hội tụ sớm về gi�
 
 
 
-Thuật toán Local Beam Search
+4.6. Thuật toán Local Beam Search
 
-Ý tưởng:
+- Ý tưởng:
 
 
-Nhận xét:
+- Nhận xét:
 Tính tối ưu: Không.
 
 Tính đầy đủ: Không.
@@ -274,15 +274,15 @@ Tính đầy đủ: Không.
 ![ScreenRecording2025-05-12022917-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/2202de07-38c9-40b6-8acd-7375f6a5dfd2)
 
 
-4/CÁC THUẬT TOÁN CSPs
+5/CÁC THUẬT TOÁN CSPs
 
-Thuật toán Backtracking:
+5.1. Thuật toán Backtracking:
 
-Ý tưởng:
+- Ý tưởng:
 
 Là một cải tiến của DFS để giải các bài toán tìm kiếm, đặc biệt là CSP. Nó duyệt cây tìm kiếm theo chiều sâu. Tại mỗi nút, nó kiểm tra xem liệu có thể hoàn thành lời giải từ nút đó hay không. Nếu không (ví dụ, vi phạm ràng buộc trong CSP, hoặc đạt giới hạn độ sâu/gặp ngõ cụt trong tìm đường đi), nó sẽ quay lui (backtrack) lên nút cha và thử một nhánh khác. Trong ngữ cảnh tìm đường đi 8-puzzle, nó thực hiện một hành động, đi sâu, nếu không đạt đích hoặc gặp trạng thái đã thăm/giới hạn độ sâu thì quay lại và thử hành động khác
 
-Nhận xét:
+- Nhận xét:
 
 Tính tối ưu: Không. Không tìm được đường đi ngắn nhất.
 
@@ -297,15 +297,15 @@ Tính đầy đủ: Không.
 ![ScreenRecording2025-05-12023846-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/e45a973e-8e3d-409b-8f7b-2c47f5ad5525)
 
 
-Thuật toán Min-conflict:
+5.2. Thuật toán Min-conflict:
 
-Ý tưởng:
+- Ý tưởng:
 
 Min-Conflicts là chiến thuật “chọn ngẫu nhiên trong các hàng xóm tốt nhất”
 giúp tránh kẹt đỉnh và duy trì sự đa dạng khi tối ưu cục bộ.
 Rất thích hợp với bài toán hạn chế, cấu hình ràng buộc (constraint problems) như 8-puzzle, n-queens.
 
-Nhận xét:
+- Nhận xét:
 Tốc độ chạy: Rất nhanh vì không mở rộng toàn bộ cây
 Khả năng tìm lời giải: không bảo đảm tìm thấy
 Tối ưu lời giải: Không bảo đảm tìm đường đi ngắn nhất
@@ -314,16 +314,16 @@ Khả năng tránh đỉnh cục bộ: Trung bình, tốt hơn Hill-Climbing th�
 
 ![ScreenRecording2025-05-12024502-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/78dc3f78-6511-47e8-970b-595b3785786b)
 
-5/ CÁC THUẬT TOÁN CHO MÔI TRƯỜNG PHỨC TẠP (COMPLEX ENVIRONMENTS)
+6/ CÁC THUẬT TOÁN CHO MÔI TRƯỜNG PHỨC TẠP (COMPLEX ENVIRONMENTS)
 
 Tìm kiếm không cảm biến (Sensorless Search): 
 
-Ý tưởng:
+- Ý tưởng:
 
 Trong Sensorless Search, trạng thái của agent không phải là 1 vị trí cụ thể, mà là tập hợp tất cả các vị trí có thể (gọi là belief state).
 → Agent phải lập kế hoạch sao cho hành động nào cũng đúng, bất kể mình đang ở đâu.
 
-Nhận xét:
+- Nhận xét:
 
 Tính tối ưu: Nếu dùng BFS trên không gian belief state, nó sẽ tìm ra conformant plan ngắn nhất (nếu tồn tại).
 
@@ -339,7 +339,7 @@ Tính đầy đủ: Có. Nếu tồn tại một conformant plan, BFS trên khô
 
 
 
-6/HỌC TĂNG CƯỜNG (Reinforcement Learning):
+7/HỌC TĂNG CƯỜNG (Reinforcement Learning):
 
 Học tăng cường là một lĩnh vực của học máy, nơi một tác tử (agent) tương tác với một môi trường và học cách hành động thông qua thử và sai để tối đa hóa một tín hiệu phần thưởng (reward) tích lũy theo thời gian.
 
@@ -358,10 +358,10 @@ V(s): Giá trị kỳ vọng (tổng phần thưởng chiết khấu trong tươ
 Q(s, a): Giá trị kỳ vọng khi thực hiện hành động a tại trạng thái s, và sau đó tuân theo chính sách π.
 Lời giải (Solution): Chính sách tối ưu π* chỉ dẫn cách hành động tại mọi trạng thái để tối đa hóa phần thưởng kỳ vọng dài hạn. Khi có π*, tác tử có thể đi từ trạng thái ban đầu đến trạng thái đích bằng cách luôn chọn hành động a = π*(s) tại mỗi trạng thái s.
 
-Ý tưởng:
+- Ý tưởng:
 Là một thuật toán RL không cần mô hình (model-free) và ngoài chính sách (off-policy). Nó học trực tiếp hàm giá trị hành động tối ưu Q*(s, a) mà không cần biết mô hình chuyển đổi P hay hàm phần thưởng R một cách tường minh. Tác tử tương tác với môi trường, thử các hành động (cân bằng giữa thăm dò - exploration để khám phá và khai thác - exploitation để chọn hành động tốt nhất đã biết) và cập nhật giá trị Q của cặp (trạng thái, hành động) đã thực hiện dựa trên phần thưởng nhận được và ước lượng giá trị tối đa của trạng thái kế tiếp, thông qua phương trình cập nhật Bellman: Q(s, a) ← Q(s, a) + α [ R + γ max<sub>a'</sub> Q(s', a') - Q(s, a) ] Trong đó: α là tốc độ học (learning rate), γ là hệ số chiết khấu (discount factor). Lưu ý: Quá trình huấn luyện (học Q-table) thường diễn ra qua hàng nghìn hoặc hàng triệu lượt tương tác (episodes) và không được hiển thị trong animation. Animation chỉ thể hiện việc sử dụng Q-table đã học (chế độ khai thác hoàn toàn) để tìm đường đi từ trạng thái đầu đến đích.
 
-Nhận xét:
+- Nhận xét:
 
 Tính tối ưu: Có thể hội tụ đến chính sách tối ưu (dẫn đến đường đi ngắn nhất nếu hàm thưởng được thiết kế phù hợp) nếu các tham số (α, γ, chiến lược thăm dò ε-greedy) được chọn đúng và tác tử được huấn luyện đủ lâu (thăm mọi cặp (s, a) đủ số lần).
 
